@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<odoo>
+    <data>
+		<template id="assets_backend" name="js backend" inherit_id="web.assets_backend"> 
+			<xpath expr="." position="inside"> 
+				<script type="text/javascript" src="/odoo_javascript/static/src/js/my_javascript.js"></script> 
+			</xpath> 
+		</template> 
+        <record model="ir.ui.view" id="js_form_view">
+            <field name="name">js.form</field>
+            <field name="model">js</field>
+            <field name="arch" type="xml">
+                <form string="js">
+                    <header>
+                       <widget name="my_widget"/>
+                    </header>
+                     <sheet>
+						<div>
+                         	<h1><field name="name" string="New" nolabel="1"></field></h1>
+                        </div>
+						<group>
+							<widget name="my_widget"/>
+						</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>	
+	    <record model="ir.actions.act_window" id="action_js">
+	        <field name="name">JS Button Click Demo</field>
+	        <field name="res_model">js</field>
+	        <field name="view_mode">form</field>
+	    </record>
+
+		<menuitem id="js_main_menu" name="Javascript Button Click"/>
+		<menuitem id="js_sub_menu" name="Javascript Button Click" parent="js_main_menu"/>
+		<menuitem id="js_button_click_menu" action="action_js" parent="js_sub_menu"/>
+    </data> 
+</odoo>
